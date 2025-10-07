@@ -4,33 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Track and manage your favorite local places">
-    <title>My Local Favorites Tracker</title>
+    <title>Books I've Read Tracker</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <!-- Header Section -->
 <header>
     <div class="container">
-        <h1>📍 My Local Favorites</h1>
-        <p class="subtitle">Track your favorite places around town</p>
+        <h1>📍 Book Tracker </h1>
+        <p class="subtitle">Reviewing and rating books I have read</p>
     </div>
 </header>
 <!-- Main Content -->
 <main class="container">
 <!-- Add Favorite Form Section -->
 <section class="add-section">
-    <h2>Add New Favorite</h2>
+    <h2>Add New Book</h2>
     <form id="add-favorite-form">
 
         <!-- Name Input -->
         <div class="form-group">
-            <label for="name">Place Name *</label>
+            <label for="name">Book Name *</label>
             <input
                 type="text"
                 id="name"
                 name="name"
                 required
-                placeholder="Enter place name"
+                placeholder="Enter book name"
                 aria-required="true">
         </div>
 
@@ -39,12 +39,12 @@
             <label for="category">Category *</label>
             <select id="category" name="category" required aria-required="true">
                 <option value="">-- Select Category --</option>
-                <option value="coffee">Coffee Shop</option>
-                <option value="restaurants">Restaurant</option>
-                <option value="parks">Park</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="study-spots">Study Spot</option>
-                <option value="fitness">Fitness</option>
+                <option value="Historical Fiction">Historical Fiction</option>
+                <option value="Biography">Biography</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Roamnce">Romance</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Self Help">Self Help</option>
                 <option value="other">Other</option>
             </select>
         </div>
@@ -72,28 +72,28 @@
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary">Add Favorite</button>
+        <button type="submit" class="btn btn-primary">Add Book</button>
 
     </form>
 </section>
 </main>
 <!-- Search/Filter Section -->
 <section class="search-section">
-    <h2>My Favorites</h2>
+    <h2>My Books</h2>
     <div class="search-controls">
         <input
             type="text"
             id="search-input"
-            placeholder="Search favorites..."
-            aria-label="Search favorites">
+            placeholder="Search..."
+            aria-label="Search books">
         <select id="category-filter" aria-label="Filter by category">
             <option value="all">All Categories</option>
-            <option value="coffee">Coffee Shop</option>
-            <option value="restaurants">Restaurant</option>
-            <option value="parks">Park</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="study-spots">Study Spot</option>
-            <option value="fitness">Fitness</option>
+            <option value="Historical Fiction">Historical Fiction</option>
+            <option value="Biography">Biography</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Romance">Romance</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Self Help">Self Help</option>
             <option value="other">Other</option>
         </select>
     </div>
@@ -102,7 +102,7 @@
     <div id="favorites-list" class="favorites-grid">
         <!-- JavaScript will add favorite cards here -->
         <!-- For now, add placeholder message -->
-        <p class="empty-message">No favorites yet. Add your first favorite place above!</p>
+        <p class="empty-message">No reviews yet. Add your first above!</p>
     </div>
 </section>
 <!-- Footer -->
