@@ -1,4 +1,4 @@
-console.log("Hello from Node.js!");
+// console.log("Hello from Node.js!");
 
 // // Try some basic JavaScript
 let numbers = [1, 2, 3, 4, 5];
