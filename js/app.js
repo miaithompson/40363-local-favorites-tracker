@@ -1,10 +1,9 @@
 // ==========================================
 // PROJECT 2: LOCAL FAVORITES TRACKER
-// LAB15: localStorage Persistence - COMPLETE!
+// LAB15: localStorage Persistence
 // ==========================================
 
 console.log('LAB15: localStorage Persistence');
-console.log('Project 2: Local Favorites Tracker - COMPLETE!');
 
 // Array to store all favorites
 let favorites = [];
@@ -47,7 +46,154 @@ function loadFavorites() {
     }
 }
 
-// [Your other functions from LAB13-14: displayFavorites, searchFavorites, deleteFavorite, addFavorite]
+// Function to display favorites
+function displayFavorites() {
+    // Clear the current list
+    favoritesList.innerHTML = '';
+
+    if (favorites.length === 0) {
+        // Display empty state message
+        const emptyMessage = document.createElement('p');
+        emptyMessage.className = 'empty-message';
+        emptyMessage.textContent = 'No favorites added yet. Add your first favorite above!';
+        favoritesList.appendChild(emptyMessage);
+        return;
+    }
+
+    // Create and append card for each favorite
+    favorites.forEach((favorite, index) => {
+        const card = document.createElement('div');
+        card.className = 'favorite-card';
+        
+        // Create stars string based on rating
+        const stars = '★'.repeat(favorite.rating) + '☆'.repeat(5 - favorite.rating);
+
+        card.innerHTML = `
+            <h3>${favorite.name}</h3>
+            <span class="category-badge">${favorite.category}</span>
+            <div class="rating">${stars}</div>
+            <p class="notes">${favorite.notes || 'No notes added'}</p>
+            <p class="date-added">Added: ${favorite.dateAdded}</p>
+            <button onclick="deleteFavorite(${index})" class="delete-btn">Delete</button>
+        `;
+
+        favoritesList.appendChild(card);
+    });
+
+    // Display count
+    const countMessage = document.createElement('p');
+    countMessage.className = 'favorites-count';
+    countMessage.textContent = `Showing ${favorites.length} favorites`;
+    favoritesList.prepend(countMessage);
+}
+
+// Function to add a new favorite
+function addFavorite(event) {
+    event.preventDefault();
+
+    // Get form values
+    const name = document.getElementById('name').value.trim();
+    const category = document.getElementById('category').value;
+    const rating = parseInt(document.getElementById('rating').value);
+    const notes = document.getElementById('notes').value.trim();
+
+    // Validate input
+    if (!name) {
+        alert('Please enter a book name');
+        return;
+    }
+
+    // Create new favorite object
+    const newFavorite = {
+        name,
+        category,
+        rating,
+        notes,
+        dateAdded: new Date().toLocaleDateString()
+    };
+
+    // Add to favorites array
+    favorites.push(newFavorite);
+    console.log('Total favorites:', favorites.length);
+
+    // Save to localStorage
+    saveFavorites();
+
+    // Clear the form
+    form.reset();
+
+    // Display updated list
+    displayFavorites();
+
+    console.log('Favorite added successfully!');
+}
+
+// Function to delete a favorite
+function deleteFavorite(index) {
+    const confirmDelete = confirm('Are you sure you want to delete this favorite?');
+
+    if (confirmDelete) {
+        // Remove from array
+        favorites.splice(index, 1);
+        console.log('Favorite deleted. Total remaining:', favorites.length);
+
+        // Save to localStorage
+        saveFavorites();
+
+        // Update display
+        displayFavorites();
+    }
+}
+
+// Function to search favorites
+function searchFavorites() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const selectedCategory = categoryFilter.value;
+
+    const filteredFavorites = favorites.filter(favorite => {
+        const matchesSearch = favorite.name.toLowerCase().includes(searchTerm) ||
+                            favorite.notes.toLowerCase().includes(searchTerm);
+        const matchesCategory = selectedCategory === 'all' || favorite.category === selectedCategory;
+        return matchesSearch && matchesCategory;
+    });
+
+    // Temporarily update display with filtered results
+    favoritesList.innerHTML = '';
+
+    if (filteredFavorites.length === 0) {
+        const noResults = document.createElement('p');
+        noResults.className = 'empty-message';
+        noResults.textContent = 'No favorites match your search.';
+        favoritesList.appendChild(noResults);
+        return;
+    }
+
+    // Display filtered results
+    filteredFavorites.forEach((favorite, index) => {
+        const card = document.createElement('div');
+        card.className = 'favorite-card';
+        
+        // Create stars string based on rating
+        const stars = '★'.repeat(favorite.rating) + '☆'.repeat(5 - favorite.rating);
+
+        card.innerHTML = `
+            <h3>${favorite.name}</h3>
+            <span class="category-badge">${favorite.category}</span>
+            <div class="rating">${stars}</div>
+            <p class="notes">${favorite.notes || 'No notes added'}</p>
+            <p class="date-added">Added: ${favorite.dateAdded}</p>
+            <button onclick="deleteFavorite(${index})" class="delete-btn">Delete</button>
+        `;
+
+        favoritesList.appendChild(card);
+    });
+
+    // Display count
+    const countMessage = document.createElement('p');
+    countMessage.className = 'favorites-count';
+    countMessage.textContent = `Showing ${filteredFavorites.length} of ${favorites.length} books`;
+    favoritesList.prepend(countMessage);
+}
 
 // Function to clear all favorites
 function clearAllFavorites() {
@@ -84,11 +230,5 @@ loadFavorites();
 
 // Display the loaded favorites (or empty message)
 displayFavorites();
-
-    // Display count
-    const countMessage = document.createElement('p');
-    countMessage.className = 'favorites-count';
-    countMessage.textContent = `Showing ${filteredFavorites.length} of ${favorites.length} favorites`;
-    favoritesList.prepend(countMessage);
 
 console.log('✅ Project 2: Local Favorites Tracker is ready to use!');
