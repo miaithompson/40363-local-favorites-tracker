@@ -238,8 +238,8 @@ textarea {
    ========================================== */
 
 .favorite-card {
-    background: white;
-    border: 2px solid #e0e0e0;
+    background: #e7e4d8;
+    border: 2px solid #e7e4d8;
     border-radius: 10px;
     padding: 1.5rem;
     transition: all 0.3s ease;
@@ -261,7 +261,7 @@ textarea {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     background-color: #e7e4d8;
-    color: white;
+    color: #8e7f36;
     border-radius: 20px;
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
@@ -274,7 +274,7 @@ textarea {
 }
 
 .favorite-notes {
-    color: #666;
+    color: #b4707e;
     margin-bottom: 1rem;
     line-height: 1.5;
 }
