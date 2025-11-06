@@ -147,7 +147,7 @@ textarea {
 }
 
 .btn-primary {
-    background-color: #8e7f36;
+    background-color: #822538;
     color: white;
 .btn-danger {
     background-color: #e7e4d8;
@@ -166,7 +166,7 @@ textarea {
 }
 
 .btn-primary:hover {
-    background-color: #8e7f36;
+    background-color: #b4707e;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
@@ -175,12 +175,12 @@ textarea {
     transform: translateY(0);
 }
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: #822538;
     color: white;
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268;
+    background-color: #b4707e;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4);
 }
@@ -238,7 +238,7 @@ textarea {
    ========================================== */
 
 .favorite-card {
-    background: #e7e4d8;
+    background: #8e7f36;
     border: 2px solid #e7e4d8;
     border-radius: 10px;
     padding: 1.5rem;
@@ -252,7 +252,7 @@ textarea {
 }
 
 .favorite-card h3 {
-    color: #333;
+    color: #ffffff;
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
 }
@@ -281,7 +281,7 @@ textarea {
 
 .favorite-date {
     font-size: 0.85rem;
-    color: #999;
+    color: #fbf9f9;
     margin-bottom: 1rem;
 }
 
@@ -298,7 +298,7 @@ textarea {
    ========================================== */
 
 footer {
-    background-color: #333;
+    background-color: #413838;
     color: white;
     text-align: center;
     padding: 1.5rem 0;
